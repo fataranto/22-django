@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            
+        {% endblock %}
+
+    </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Cabecera -->
+    <header id="header">
+        <div id="logotipo">
+            <img src="{% static 'images/logo.png'%}" alt="">
+            <h1>Web con Django</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/hola-mundo">Hola Mundo</a></li>
+                <li><a href="/pagina">Pagina</a></li>
+                <li><a href="/contacto">Contacto/</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <hr>
+
+    <div id="content">
+        <h2 class="title">Titulo prueba</h2>
+        {% block content %}
+        <strong>contenido super</strong>
+            <!-- Aquí se mostrará el contenido de cada página -->
+
+        {% endblock %}
+
+    </div>
+
+    <footer>
+        <hr>
+        <p>Desarrollado por mi, &copy; <?= date('Y') ?></p>
+    </footer>
+</body>
+</html>
