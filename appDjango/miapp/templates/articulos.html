@@ -7,18 +7,35 @@
 {% block content %}
     <h1 class="title">Listado de artículos</h1>
 
-    <ul>
-        {% for articulo in articulos %}
-            <li>
-                <h2>{{ articulo.id }} - {{ articulo.title }}</h2>
-                <p>{{ articulo.content }}</p>
-                <p><strong>Fecha de publicación: </strong>{{ articulo.created_at }}</p>
-                <a href="{% url 'borrar' id=articulo.id %}">eliminar articulo</a>
-                <br>
-                <br>
-            </li>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message">
+                {{ message }}
+            </div>
         {% endfor %}
-    </ul>
+    {% endif %}
+
+
+        {% for articulo in articulos %}
+            <article class="article-item">
+                <div class="image">
+                    {% if articulo.image != 'null' and articulo.image|length >= 1 %}
+                        <img src="{{ articulo.image.url}}" />                
+                    {% endif %}
+                </div>
+
+                <div class="data">
+                    <h2>{{ articulo.title }}</h2>
+                    <p>{{ articulo.content }}</p>
+                    <p><strong>Fecha de publicación: </strong>{{ articulo.created_at }}</p>
+                    <a href="{% url 'borrar' id=articulo.id %}">eliminar articulo</a>             
+                </div>
+
+                <div class="clearfix"></div>
+        
+            </article>
+        {% endfor %}
+
     
 
 {% endblock %}

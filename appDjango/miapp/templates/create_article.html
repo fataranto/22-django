@@ -6,5 +6,25 @@
 
 {% block content %}
     <h1 class="title">Formularios en Django</h1>
-    <h2>Cargar arrtículos</h2>
+    <h2>Cargar artículos</h2>
+
+    <form action="{% url 'save' %}" method='POST'>
+        {% csrf_token %}
+
+        <label for="name">Título</label>
+        <input type="text" name="title" style="width:100%" />
+
+        <label for="content">Contenido</label>
+        <textarea name="content"></textarea>
+
+        <label for="public">¿Publicado?</label>
+        <select name="public">
+            <option value="1">Sí</option>
+            <option value="0">No</option>
+        </select>
+
+        <input type="submit" value="Guardar"/>
+    </form>
+
+
 {% endblock %}
