@@ -10,6 +10,7 @@
         {% endblock %}
 
     </title>
+    
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -17,36 +18,36 @@
     <header id="header">
         <div id="logotipo">
             <img src="{% static 'images/logo.png'%}" alt="">
-            <h1>Web con Django</h1>
+            <h1 class="title">Web con Django</h1>
         </div>
 
         <nav>
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/hola-mundo">Hola Mundo</a></li>
-                <li><a href="/pagina">Pagina</a></li>
-                <li><a href="/contacto">Contacto/</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'articulos' %}">Artículos</a></li>
+                <li><a href="{% url 'hola_mundo' %}">Hola Mundo</a></li>
+                <li><a href="{% url 'pagina' %}">Pagina</a></li>
+                <li><a href="{% url 'contacto' %}">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
 
 
-    <hr>
-
     <div id="content">
-        <h2 class="title">Titulo prueba</h2>
-        {% block content %}
-        <strong>contenido super</strong>
-            <!-- Aquí se mostrará el contenido de cada página -->
 
-        {% endblock %}
+        <div class="box">
+            <h2 class="title">Titulo prueba</h2>
+            {% block content %}
+            <strong>contenido super</strong>
+                <!-- Aquí se mostrará el contenido de cada página -->
 
+            {% endblock %}
+        </div>
     </div>
 
     <footer>
-        <hr>
-        <p>Desarrollado por mi, &copy; <?= date('Y') ?></p>
+        <p>Desarrollado por mi, &copy; - {% now "Y"%}</p>
     </footer>
 </body>
 </html>
